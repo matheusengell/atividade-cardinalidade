@@ -1,4 +1,7 @@
 package com.atividade.estrutura.pedagogica.dto.departamento;
 
-public record DepartamentoRequestDto() {
+public record DepartamentoRequestDto(
+
+        String nome
+) {
 }
