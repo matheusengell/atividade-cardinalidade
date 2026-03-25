@@ -1,4 +1,10 @@
 package com.atividade.atividade2.dto.pedido;
 
-public record PedidoRequestDto() {
+import java.time.LocalDate;
+
+public record PedidoRequestDto(
+
+        Double valor,
+        LocalDate dataPedido
+) {
 }

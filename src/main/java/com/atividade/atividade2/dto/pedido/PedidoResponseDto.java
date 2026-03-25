@@ -1,4 +1,13 @@
 package com.atividade.atividade2.dto.pedido;
 
-public record PedidoResponseDto() {
+import jakarta.persistence.Column;
+
+import java.time.LocalDate;
+
+public record PedidoResponseDto(
+
+         Long id,
+         Double valor,
+         LocalDate dataPedido
+) {
 }
