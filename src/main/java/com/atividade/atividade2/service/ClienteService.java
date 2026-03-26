@@ -31,4 +31,19 @@ public class ClienteService {
                 .toList();
     }
 
+    public ClienteResponseDto listarPorId(Long id){
+        Cliente cliente = repository.findById(id)
+                .orElseThrow(()-> new RuntimeException("Cliente não encontrado"));
+
+        return mapper.paraDto(cliente);
+    }
+
+    public List<ClienteResponseDto> listarPorNome(String nome){
+        List<Cliente> clientes = repository.findByNome(nome);
+
+        return clientes.stream()
+                .map(mapper::paraDto)
+                .toList();
+    }
+
 }

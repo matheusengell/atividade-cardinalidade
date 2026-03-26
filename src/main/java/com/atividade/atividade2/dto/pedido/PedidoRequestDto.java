@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public record PedidoRequestDto(
 
         Double valor,
-        LocalDate dataPedido
+        LocalDate dataPedido,
+        String descricao
 ) {
 }

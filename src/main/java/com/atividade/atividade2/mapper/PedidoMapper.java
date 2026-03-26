@@ -11,7 +11,8 @@ public class PedidoMapper {
     public Pedido paraEntidade(PedidoRequestDto requestDto){
         return new Pedido(
                 requestDto.valor(),
-                requestDto.dataPedido()
+                requestDto.dataPedido(),
+                requestDto.descricao()
         );
     }
 
