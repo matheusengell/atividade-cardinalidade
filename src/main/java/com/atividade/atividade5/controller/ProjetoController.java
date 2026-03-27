@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/curso")
+@RequestMapping("/projeto")
 @RequiredArgsConstructor
 public class ProjetoController {
-
 
     private final ProjetoService service;
 
