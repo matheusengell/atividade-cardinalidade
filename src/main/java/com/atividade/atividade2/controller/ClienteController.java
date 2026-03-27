@@ -5,6 +5,8 @@ import com.atividade.atividade2.dto.cliente.ClienteResponseDto;
 import com.atividade.atividade2.service.ClienteService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,22 +20,26 @@ public class ClienteController {
 
 
     @PostMapping
-    public ClienteResponseDto criar(@RequestBody ClienteRequestDto requestDto){
-        return service.criarCliente(requestDto);
+    public ResponseEntity<ClienteResponseDto> criar(@RequestBody ClienteRequestDto requestDto){
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(service.criarCliente(requestDto));
     }
 
     @GetMapping
-    public List<ClienteResponseDto> listarTodos(){
-        return service.listarClientes();
+    public ResponseEntity<List<ClienteResponseDto>> listarTodos(){
+        List<ClienteResponseDto> cliente = service.listarClientes();
+        return ResponseEntity.ok(cliente);
     }
 
     @GetMapping("/{id}")
-    public ClienteResponseDto buscarPorId(@PathVariable Long id){
-        return service.listarPorId(id);
+    public ResponseEntity<ClienteResponseDto> buscarPorId(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.listarPorId(id));
     }
 
     @GetMapping("/busca/{nome}")
-    public List<ClienteResponseDto> buscarPorNome(@PathVariable String nome) {
-        return  service.listarPorNome(nome);
+    public ResponseEntity<List<ClienteResponseDto>> buscarPorNome(@PathVariable String nome) {
+        List<ClienteResponseDto> cliente = service.listarPorNome(nome);
+        return ResponseEntity.ok(cliente);
     }
     }
