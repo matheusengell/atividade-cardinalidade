@@ -22,7 +22,7 @@ public class PedidoService {
         Cliente cliente = clienteRepository.findById(requestDto.idCliente())
                 .orElseThrow(()-> new RuntimeException("Cliente não encontrado"));
 
-        Pedido pedido = mapper.paraEntidade(requestDto);
+        Pedido pedido = mapper.paraEntidade(requestDto, cliente);
 
         pedido.setCliente(cliente);
 
