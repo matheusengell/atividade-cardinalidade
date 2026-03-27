@@ -4,6 +4,8 @@ import com.atividade.atividade1.dto.departamento.DepartamentoRequestDto;
 import com.atividade.atividade1.dto.departamento.DepartamentoResponseDto;
 import com.atividade.atividade1.service.DepartamentoService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,18 +18,21 @@ public class DepartamentoController {
     private final DepartamentoService service;
 
     @PostMapping
-    public DepartamentoResponseDto criarDepartamento(@RequestBody DepartamentoRequestDto requestDto){
-        return service.criarDepartamento(requestDto);
+    public ResponseEntity<DepartamentoResponseDto> criarDepartamento(@RequestBody DepartamentoRequestDto requestDto){
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(service.criarDepartamento(requestDto));
     }
 
     @GetMapping("/{id}")
-    public DepartamentoResponseDto buscarPorId(@PathVariable Long id){
-        return service.buscarPorId(id);
+    public ResponseEntity<DepartamentoResponseDto> buscarPorId(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.buscarPorId(id));
     }
 
     @GetMapping
-    public List<DepartamentoResponseDto> listarTodos(){
-        return service.listarDepartamento();
+    public ResponseEntity<List<DepartamentoResponseDto>> listarTodos(){
+        List<DepartamentoResponseDto> departamento = service.listarDepartamento();
+        return ResponseEntity.ok(departamento);
     }
 
 }

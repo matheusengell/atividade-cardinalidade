@@ -4,6 +4,8 @@ import com.atividade.atividade1.dto.funcionario.FuncionarioRequestDto;
 import com.atividade.atividade1.dto.funcionario.FuncionarioResponseDto;
 import com.atividade.atividade1.service.FuncionarioService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,28 +19,33 @@ public class FuncionarioController {
     
     
     @PostMapping
-    public FuncionarioResponseDto criarFuncionario(@RequestBody FuncionarioRequestDto requestDto){
-        return service.criarFuncionario(requestDto);
+    public ResponseEntity<FuncionarioResponseDto> criarFuncionario(@RequestBody FuncionarioRequestDto requestDto){
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(service.criarFuncionario(requestDto));
     }
     
     @GetMapping
-    public List<FuncionarioResponseDto> listarTodos(){
-        return service.listarFuncionarios();
+    public ResponseEntity<List<FuncionarioResponseDto>> listarTodos(){
+        List<FuncionarioResponseDto> funcionarios = service.listarFuncionarios();
+        return ResponseEntity.ok(funcionarios);
     }
     
     @GetMapping("/departamento/{departamentoId}")
-    public List<FuncionarioResponseDto> listarPorDepartamentoId(@PathVariable Long departamentoId){
-        return service.listarPorDepartamentoId(departamentoId);
+    public ResponseEntity<List<FuncionarioResponseDto>> listarPorDepartamentoId(@PathVariable Long departamentoId){
+        List<FuncionarioResponseDto> funcionarios = service.listarPorDepartamentoId(departamentoId);
+        return ResponseEntity.ok(funcionarios);
     }
 
     @GetMapping("/nome/{nome}")
-    public List<FuncionarioResponseDto> listarPorNome(@PathVariable String nome) {
-        return service.listarPorNome(nome);
+    public ResponseEntity<List<FuncionarioResponseDto>> listarPorNome(@PathVariable String nome) {
+        List<FuncionarioResponseDto> funcionarios = service.listarPorNome(nome);
+        return ResponseEntity.ok(funcionarios);
     }
 
     @GetMapping("/filtro/{id}/{nome}")
-    public FuncionarioResponseDto listarPorNomeId(@PathVariable  Long id, @PathVariable String nome) {
-        return service.buscarPorNomeId(id, nome);
+    public ResponseEntity<FuncionarioResponseDto> listarPorNomeId(@PathVariable  Long id, @PathVariable String nome) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.buscarPorNomeId(id, nome));
     }
 
 
