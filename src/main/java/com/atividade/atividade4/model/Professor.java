@@ -28,4 +28,9 @@ public class Professor {
 
     @OneToMany(mappedBy = "professor")
     private List<Curso> cursos;
+
+    public Professor(String nome, String especialidade) {
+        this.nome = nome;
+        this.especialidade = especialidade;
+    }
 }

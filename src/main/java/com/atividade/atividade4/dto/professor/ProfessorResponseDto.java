@@ -1,6 +1,10 @@
 package com.atividade.atividade4.dto.professor;
 
-public record ProfessorResponseDto(
+import jakarta.persistence.Column;
 
+public record ProfessorResponseDto(
+         Long id,
+         String nome,
+         String especialidade
 ) {
 }

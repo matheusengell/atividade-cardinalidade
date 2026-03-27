@@ -8,5 +8,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class CursoMapper {
 
+    public Curso paraEntidade(CursoRequestDto requestDto){
+        return new Curso(
+                requestDto.nome(),
+                requestDto.cargaHoraria()
+        );
+    }
 
+    public CursoResponseDto paraDto(Curso curso){
+        return new CursoResponseDto(
+                curso.getId(),
+                curso.getNome(),
+                curso.getProfessor().getNome()
+        );
+    }
 }

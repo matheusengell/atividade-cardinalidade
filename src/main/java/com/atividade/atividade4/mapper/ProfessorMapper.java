@@ -8,4 +8,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class ProfessorMapper {
 
+    public Professor paraEntidade(ProfessorRequestDto requestDto){
+        return new Professor(
+                requestDto.nome(),
+                requestDto.especialidade()
+        );
+    }
+
+    public ProfessorResponseDto paraDto(Professor professor){
+        return new ProfessorResponseDto(
+                professor.getId(),
+                professor.getNome(),
+                professor.getEspecialidade()
+        );
+    }
 }

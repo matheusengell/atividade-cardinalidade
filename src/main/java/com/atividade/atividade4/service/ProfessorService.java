@@ -16,5 +16,21 @@ import java.util.List;
 @AllArgsConstructor
 public class ProfessorService {
 
+    private final ProfessorRepository repository;
+    private ProfessorMapper mapper;
+
+    public ProfessorResponseDto criar(ProfessorRequestDto requestDto){
+        Professor professor = mapper.paraEntidade(requestDto);
+        repository.save(professor);
+        return mapper.paraDto(professor);
+    }
+
+    public List<ProfessorResponseDto> listarTodos(){
+        List<Professor> professores = repository.findAll();
+
+        return professores.stream()
+                .map(mapper::paraDto)
+                .toList();
+    }
 
 }

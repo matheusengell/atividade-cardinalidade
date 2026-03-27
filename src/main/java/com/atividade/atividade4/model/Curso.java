@@ -26,10 +26,13 @@ public class Curso {
     @Column(nullable = false)
     private Integer cargaHoraria;
 
-    @Column(nullable = false)
-    private String nomeProfessor;
 
     @ManyToOne
     @JoinColumn(name = "id_professor")
     private Professor professor;
+
+    public Curso(String nome, Integer cargaHoraria) {
+        this.nome = nome;
+        this.cargaHoraria = cargaHoraria;
+    }
 }

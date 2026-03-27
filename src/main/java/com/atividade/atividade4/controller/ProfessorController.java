@@ -14,4 +14,16 @@ import java.util.List;
 public class ProfessorController {
 
 
+    private final ProfessorService service;
+
+    @PostMapping
+    public ProfessorResponseDto criar(@RequestBody ProfessorRequestDto requestDto){
+        return service.criar(requestDto);
+    }
+
+    @GetMapping
+    public List<ProfessorResponseDto> listarTodos(){
+        return service.listarTodos();
+    }
+
 }
