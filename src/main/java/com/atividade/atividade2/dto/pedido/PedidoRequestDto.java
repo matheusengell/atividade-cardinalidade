@@ -6,6 +6,7 @@ public record PedidoRequestDto(
 
         Double valor,
         LocalDate dataPedido,
-        String descricao
+        String descricao,
+        Long idCliente
 ) {
 }

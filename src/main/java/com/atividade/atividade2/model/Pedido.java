@@ -29,10 +29,14 @@ public class Pedido {
     @Column(nullable = false)
     private String descricao;
 
+    @ManyToOne
+    @JoinColumn(name = "id_cliente")
+    private Cliente cliente;
 
-    public Pedido(Double valor, LocalDate dataPedido, String descricao) {
+    public Pedido(Double valor, LocalDate dataPedido, String descricao, Cliente cliente) {
         this.valor = valor;
         this.dataPedido = dataPedido;
         this.descricao = descricao;
+        this.cliente = cliente;
     }
 }

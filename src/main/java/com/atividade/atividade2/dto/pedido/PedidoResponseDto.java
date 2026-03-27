@@ -8,6 +8,7 @@ public record PedidoResponseDto(
 
          Long id,
          Double valor,
-         LocalDate dataPedido
+         LocalDate dataPedido,
+         Long idCliente
 ) {
 }

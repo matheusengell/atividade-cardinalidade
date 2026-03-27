@@ -12,7 +12,8 @@ public class PedidoMapper {
         return new Pedido(
                 requestDto.valor(),
                 requestDto.dataPedido(),
-                requestDto.descricao()
+                requestDto.descricao(),
+                cliente
         );
     }
 
