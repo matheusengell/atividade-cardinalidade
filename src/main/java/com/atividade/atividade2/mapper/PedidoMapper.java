@@ -23,7 +23,9 @@ public class PedidoMapper {
                 pedido.getId(),
                 pedido.getValor(),
                 pedido.getDataPedido(),
-                pedido.getCliente().getId()
+                pedido.getDescricao(),
+                pedido.getCliente().getId(),
+                pedido.getCliente().getNome()
         );
     }
 }

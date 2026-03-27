@@ -9,6 +9,8 @@ public record PedidoResponseDto(
          Long id,
          Double valor,
          LocalDate dataPedido,
-         Long idCliente
+         String descricao,
+         Long idCliente,
+         String nomeCliente
 ) {
 }

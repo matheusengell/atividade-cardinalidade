@@ -10,6 +10,8 @@ import com.atividade.atividade2.repository.PedidoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class PedidoService {
@@ -29,6 +31,37 @@ public class PedidoService {
         repository.save(pedido);
         return mapper.paraDto(pedido);
     }
+
+    public List<PedidoResponseDto> listarTodos(){
+        List<Pedido> pedidos = repository.findAll();
+
+        return pedidos.stream()
+                .map(mapper::paraDto)
+                .toList();
+    }
+
+
+    public List<PedidoResponseDto> listarPorClienteNome(String nome){
+        List<Pedido> pedidos = repository.findByClienteNome(nome);
+        return pedidos.stream()
+                .map(mapper::paraDto)
+                .toList();
+    }
+
+    public List<PedidoResponseDto> listarPorClienteId(Long id){
+        List<Pedido> pedidos = repository.findByClienteId(id);
+        return pedidos.stream()
+                .map(mapper::paraDto)
+                .toList();
+    }
+
+    public PedidoResponseDto listarPorIdEDescricao(Long id, String descricao){
+        Pedido pedido = repository.findByIdAndDescricaoContainingIgnoreCase(id, descricao)
+                .orElseThrow(() -> new RuntimeException("Pedido não encontrado"));
+
+        return mapper.paraDto(pedido);
+    }
+
 
 
 
