@@ -1,7 +1,4 @@
-package com.atividade.atividade3.dto.pedido;
-
-import com.atividade.atividade3.model.Categoria;
-import jakarta.persistence.Column;
+package com.atividade.atividade3.dto.produto;
 
 public record ProdutoResponseDto(
 

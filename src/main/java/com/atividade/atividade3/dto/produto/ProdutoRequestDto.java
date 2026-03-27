@@ -1,4 +1,4 @@
-package com.atividade.atividade3.dto.pedido;
+package com.atividade.atividade3.dto.produto;
 
 public record ProdutoRequestDto(
 

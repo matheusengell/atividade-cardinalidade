@@ -1,4 +1,4 @@
-package com.atividade.atividade3.dto.cliente;
+package com.atividade.atividade3.dto.categoria;
 
 public record CategoriaResponseDto(
 

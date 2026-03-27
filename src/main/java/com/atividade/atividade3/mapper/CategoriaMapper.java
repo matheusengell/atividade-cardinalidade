@@ -1,7 +1,7 @@
 package com.atividade.atividade3.mapper;
 
-import com.atividade.atividade3.dto.cliente.CategoriaRequestDto;
-import com.atividade.atividade3.dto.cliente.CategoriaResponseDto;
+import com.atividade.atividade3.dto.categoria.CategoriaRequestDto;
+import com.atividade.atividade3.dto.categoria.CategoriaResponseDto;
 import com.atividade.atividade3.model.Categoria;
 import org.springframework.stereotype.Component;
 
