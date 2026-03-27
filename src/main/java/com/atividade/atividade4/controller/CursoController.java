@@ -4,6 +4,8 @@ import com.atividade.atividade4.dto.curso.CursoRequestDto;
 import com.atividade.atividade4.dto.curso.CursoResponseDto;
 import com.atividade.atividade4.service.CursoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,28 +19,33 @@ public class CursoController {
     private final CursoService service;
 
     @PostMapping
-    public CursoResponseDto cadastrar(@RequestBody CursoRequestDto requestDto){
-        return service.cadastrar(requestDto);
+    public ResponseEntity<CursoResponseDto> cadastrar(@RequestBody CursoRequestDto requestDto){
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(service.cadastrar(requestDto));
     }
 
     @GetMapping
-    public List<CursoResponseDto> listarTodos(){
-        return service.listarTodos();
+    public ResponseEntity<List<CursoResponseDto>> listarTodos(){
+        List<CursoResponseDto> curso = service.listarTodos();
+        return ResponseEntity.ok(curso);
     }
 
     @GetMapping("/professor/nome/{nome}")
-    public List<CursoResponseDto> listarPorProfessorNome(@PathVariable String nome){
-        return service.listarPorNomeProfessor(nome);
+    public ResponseEntity<List<CursoResponseDto>> listarPorProfessorNome(@PathVariable String nome){
+        List<CursoResponseDto> cursoResponseDtos = service.listarPorNomeProfessor(nome);
+        return ResponseEntity.ok(cursoResponseDtos);
     }
 
     @GetMapping("/professor/id/{id}")
-    public List<CursoResponseDto> listarPorProfessorId(@PathVariable Long id){
-        return service.listarPorIdProfessor(id);
+    public ResponseEntity<List<CursoResponseDto>> listarPorProfessorId(@PathVariable Long id){
+        List<CursoResponseDto> curso = service.listarPorIdProfessor(id);
+        return ResponseEntity.ok(curso);
     }
 
     @GetMapping("/{id}/{nome}")
-    public CursoResponseDto buscarPorIdAndNome(@PathVariable Long id, @PathVariable String nome){
-        return service.listarPorIdAndNome(id, nome);
+    public ResponseEntity<CursoResponseDto> buscarPorIdAndNome(@PathVariable Long id, @PathVariable String nome){
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(service.listarPorIdAndNome(id, nome));
     }
 
 }
