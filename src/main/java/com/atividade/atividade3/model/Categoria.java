@@ -27,4 +27,7 @@ public class Categoria {
     List<Produto> produtos;
 
 
+    public Categoria(String nome) {
+        this.nome = nome;
+    }
 }
